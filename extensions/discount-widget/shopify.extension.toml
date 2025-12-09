@@ -1,0 +1,11 @@
+api_version = "2024-04"
+
+[[extensions]]
+name = "discount-widget"
+handle = "discount-widget"
+type = "theme"
+uid = "d6afe511-c8e4-7eec-230c-c5eda3b571598b3eb33e"
+
+[[extensions.blocks]]
+name = "Volume Discount Banner"
+path = "blocks/discount-banner.liquid"

@@ -1,0 +1,34 @@
+<div class="volume-discount-banner" style="
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+">
+  🎉 Buy 2, get {{ block.settings.discount_percent }}% off!
+</div>
+
+{% schema %}
+{
+  "name": "Volume Discount Banner",
+  "target": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "discount_percent",
+      "label": "Discount Percentage",
+      "min": 1,
+      "max": 80,
+      "default": 10,
+      "unit": "%"
+    }
+  ]
+}
+{% endschema %}
