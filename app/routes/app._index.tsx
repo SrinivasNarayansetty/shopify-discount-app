@@ -205,7 +205,7 @@ export default function Index() {
                 />
                 <s-text>%</s-text>
               </s-stack>
-              <s-text variant="subdued">Enter a value between 1 and 80</s-text>
+              <span style={{ color: "#6b7280", fontSize: "13px" }}>Enter a value between 1 and 80</span>
             </s-stack>
           </s-box>
         </s-stack>
@@ -218,14 +218,16 @@ export default function Index() {
           {products.map((product: any) => {
             const isSelected = selectedProducts.includes(product.id);
             return (
-              <s-box
+              <div
                 key={product.id}
-                padding="base"
-                borderWidth="base"
-                borderRadius="base"
-                background={isSelected ? "subdued" : "default"}
-                style={{ cursor: "pointer" }}
                 onClick={() => toggleProduct(product.id)}
+                style={{
+                  padding: "12px",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  backgroundColor: isSelected ? "#f3f4f6" : "transparent",
+                }}
               >
                 <s-stack direction="inline" gap="base">
                   {product.featuredImage?.url && (
@@ -240,16 +242,18 @@ export default function Index() {
                       }}
                     />
                   )}
-                  <s-stack direction="block" gap="tight">
-                    <s-text fontWeight={isSelected ? "bold" : "regular"}>
-                      {product.title}
+                  <s-stack direction="block" gap="none">
+                    <s-text>
+                      <span style={{ fontWeight: isSelected ? "bold" : "normal" }}>
+                        {product.title}
+                      </span>
                     </s-text>
-                    <s-text variant="subdued" size="small">
+                    <span style={{ color: "#6b7280", fontSize: "13px" }}>
                       {isSelected ? "✓ Selected" : "Click to select"}
-                    </s-text>
+                    </span>
                   </s-stack>
                 </s-stack>
-              </s-box>
+              </div>
             );
           })}
         </s-stack>
@@ -257,16 +261,13 @@ export default function Index() {
 
       <s-section slot="aside" heading="Current Configuration">
         <s-paragraph>
-          <s-text fontWeight="bold">Products Selected: </s-text>
-          <s-text>{selectedProducts.length}</s-text>
+          <strong>Products Selected:</strong> {selectedProducts.length}
         </s-paragraph>
         <s-paragraph>
-          <s-text fontWeight="bold">Discount: </s-text>
-          <s-text>{percentOff}%</s-text>
+          <strong>Discount:</strong> {percentOff}%
         </s-paragraph>
         <s-paragraph>
-          <s-text fontWeight="bold">Min Quantity: </s-text>
-          <s-text>2</s-text>
+          <strong>Min Quantity:</strong> 2
         </s-paragraph>
       </s-section>
 
