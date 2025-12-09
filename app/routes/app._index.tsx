@@ -181,7 +181,7 @@ export default function Index() {
 
       <s-section heading="Discount Settings">
         <s-paragraph>
-          Configure "Buy 2, get X% off" discount for selected products.
+          Configure &quot;Buy 2, get X% off&quot; discount for selected products.
         </s-paragraph>
 
         <s-stack direction="block" gap="base">
@@ -215,12 +215,19 @@ export default function Index() {
         heading={`Select Products (${selectedProducts.length} selected)`}
       >
         <s-stack direction="block" gap="base">
-          {products.map((product: any) => {
+          {products.map((product: { id: string; title: string; featuredImage?: { url: string } }) => {
             const isSelected = selectedProducts.includes(product.id);
             return (
               <div
                 key={product.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => toggleProduct(product.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    toggleProduct(product.id);
+                  }
+                }}
                 style={{
                   padding: "12px",
                   border: "1px solid #e5e7eb",
@@ -275,7 +282,7 @@ export default function Index() {
         <s-ordered-list>
           <s-list-item>Select products for volume discount</s-list-item>
           <s-list-item>Set the discount percentage</s-list-item>
-          <s-list-item>Click "Save Configuration"</s-list-item>
+          <s-list-item>Click &quot;Save Configuration&quot;</s-list-item>
           <s-list-item>Customers buying 2+ units get the discount!</s-list-item>
         </s-ordered-list>
       </s-section>
